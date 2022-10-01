@@ -37,11 +37,13 @@ app.display = () => {
     app.liElement = document.querySelector("li");
     app.api.map(coin => {
         app.liElement.innerHTML +=
-            `<p> ${coin.rank}</p>
-                <img src="${coin.iconUrl}" alt="" style=width:50px>
-                <p>${coin.name}</p>
+            `<div class="coinList"><p> ${coin.rank}</p>
+                <div class="coinId">
+                    <img src="${coin.iconUrl}" alt="">
+                    <p>${coin.name}</p>
+                </div>
                 <p>Price: ${coin.price}</p>
-                <p>Marketcap: ${coin.marketCap}</p>`
+                <p>Marketcap: ${coin.marketCap}</p></div>`
     })
 }
 
@@ -56,11 +58,11 @@ app.displayOneCoin = (api) => {
         const usersCoin = api.filter(coin => coin.name.toLowerCase() === userInput || coin.symbol.toLowerCase() === userInput)
         usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<p> ${coin.rank}</p>
+                `<div class="coinContainer"><p> ${coin.rank}</p>
                 <img src="${coin.iconUrl}" alt="" style=width:50px>
                 <p>${coin.name}</p>
                 <p>Price: ${coin.price}</p>
-                <p>Marketcap: ${coin.marketCap}</p>`
+                <p>Marketcap: ${coin.marketCap}</p></div>`
         })
 
     })
