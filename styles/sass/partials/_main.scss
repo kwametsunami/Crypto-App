@@ -1,0 +1,87 @@
+@use "variables" as *;
+
+.landing {
+    // turn back to flex
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .titleContainer {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        #green {
+            animation: blend 0.65s linear 0.5s 1 normal forwards
+        }
+    }
+    .donate {
+        display: flex;
+        justify-content: center;
+        .donate-arrow {
+            animation: fade 3.5s ease-in 0s 1 normal forwards, bounce 0.65s linear 5s 2 normal forwards;
+        }
+    }
+    .bars {
+        display: flex;
+        justify-content: space-between;
+        padding: 35px 0;
+        width: 100%;
+        position: relative;
+        .searchBar {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-right: 20px;
+            form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                label {
+                    padding: 10px 0;
+                }
+                input {
+                    padding: 15px;
+                    width: 100%;
+                    &::placeholder {
+                        font-size: 1.5rem;
+                    }
+                    &:focus {
+                        outline: none;
+                        border-left: 0.4rem solid $green;
+                        border-bottom: 0.4rem solid $green;
+                    }
+                }
+            }
+        }
+        .dropDownFilter {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 20px;
+            label {
+                padding: 10px 0;
+            }
+            select {
+                padding: 15px;
+                &:focus {
+                    outline: none;
+                    border-left: 0.4rem solid $green;
+                    border-bottom: 0.4rem solid $green;
+                    // box-shadow: 25px -25px $green;
+                }
+            }
+        }
+        p {
+            margin: 0;
+            align-self: flex-end;
+            #or {
+                font-size: 3.5rem;
+                color: $white;
+                align-self: flex-start;
+            }
+        }
+    }
+}

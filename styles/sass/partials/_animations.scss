@@ -1,0 +1,52 @@
+@use "variables" as *;
+
+@keyframes blend {
+    0% {
+        color: $white;
+    }
+
+    100% {
+        color: $green;
+    }
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateX(15%);
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    95% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.underlineTransition {
+    display: inline-block;
+    position: relative;
+    color: $blue;
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $blue;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    &:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
