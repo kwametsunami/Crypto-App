@@ -34,22 +34,47 @@ app.dropDown = () => {
 }
 
 app.display = () => {
-    app.liElement = document.querySelector("li");
+    app.liElement = document.querySelector("tbody");
+    const listOn = () => {
+        liElement.style.display = "flex"
+        console.log("list is on!")
+    }
+    const oneCoin = document.querySelector(".onecoin")
+    const bothInputs = document.querySelectorAll("input")
+    const input1 = bothInputs [0]
+    console.log(input1)
+    // console.log(input2)
+    console.log(bothInputs)
+    // const {input3, input4} = app.api
+    // console.log(input3)
+    // console.log(input4)
+    const clear = () => {
+        oneCoin.style.display = "none"
+        console.log("cleared!");
+    }
+    clear()
     app.api.map(coin => {
         app.liElement.innerHTML +=
-            `<div class="coinList"><p> ${coin.rank}</p>
-                <div class="coinId">
-                    <img src="${coin.iconUrl}" alt="">
-                    <p>${coin.name}</p>
-                </div>
-                <p>Price: ${coin.price}</p>
-                <p>Marketcap: ${coin.marketCap}</p></div>`
+            `<tr><td>${coin.rank}</td>
+            <td><img src="${coin.iconUrl}" alt="">
+                ${coin.name}</td>
+                <td>${coin.price}</td>
+                <td>${coin.marketCap}</td></tr>`
     })
 }
 
 app.displayOneCoin = (api) => {
     const oneCoinEl = document.querySelector('.onecoin')
     const formEl = document.querySelector('form')
+    const list = document.querySelector(".list")
+    const coinOn = () => {
+        oneCoinEl.style.display = "flex"
+        console.log("coin is displaying")
+    }
+    const clear = () => {
+        list.style.display = "none"
+        console.log("cleared the list!")
+    }
     formEl.addEventListener('submit', (event) => {
         event.preventDefault()
         let inputEl = document.querySelector('input')
@@ -70,12 +95,28 @@ app.displayOneCoin = (api) => {
 
 }
 
+app.modal = () => {
+    const modalBox = document.querySelector('.modalContainer')
+    const body = document.body
+    const showModal = document.querySelector('.underlineTransition').addEventListener('click', function (){
+        modalBox.style.display = "block"
+        body.style.overflow = "hidden";
+        console.log("modal!")
+    });
+
+    const close = document.querySelector(".close").addEventListener("click", function (){
+        modalBox.style.display = "none";
+        body.style.overflow = "auto";
+        console.log("closed!")
+    });
+}
+
 
 
 app.init = () => {
     getApi()
     app.dropDown()
-
+    app.modal()
 }
 
 

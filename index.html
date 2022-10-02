@@ -12,18 +12,18 @@
 <header>
     <nav>
         <div class="desktop wrapper">
-            <h3><a href="#home">Hire Me <span id="greenNav">Coin</span></h3></a>
+            <h3><a href="./index.html">Hire Me <span id="greenNav">Coin</span></h3></a>
             <div class="navBars">
                 <div class="navSearchBar">
-                    <form action="">
+                    <form class="navForm" action="">
                         <label for="search" aria-label="search"></label>
-                        <input type="text" placeholder="Search">
+                        <input class="navInput" type="text" placeholder="Search">
                     </form>
                 </div>
                 <p><span id="orNav">or</span></p>
                 <div class="navDropDownFilter">
                     <label for="navDropdown" aria-label="filter by"></label>
-                    <select name="" id="">
+                    <select class ="navSelect" name="" id="">
                         <option disabled selected>sort</option>
                         <option value="alpha">alphabetically</option>
                         <option value="marketCap">marketcap</option>
@@ -34,11 +34,18 @@
         </div>
     </nav>
     <div class="onecoin wrapper"></div>
-    <div class="list wrapper">
-        <ul>
-            <li></li>
-        </ul>
-    </div>
+    <table class="list">
+        <thead>
+            <!-- <tr class="listLabels">
+                <th>ranking</th>
+                <th>name</th>
+                <th>price</th>
+                <th>market cap</th>
+            </tr> -->
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </header>
 <body>
     <main>
@@ -52,15 +59,15 @@
             </div>
             <div class="bars">
                 <div class="searchBar">
-                    <form action="">
+                    <form class="landingSearch" action="">
                         <label for="search">Search by Coin</label>
-                        <input type="text" placeholder="e.g Bitcoin">
+                        <input class="landingInput" type="text" placeholder="e.g Bitcoin">
                     </form>
                 </div>
                 <p><span id="or">or</span></p>
                 <div class="dropDownFilter">
                     <label for="dropdown">Filter by</label>
-                    <select name="" id="">
+                    <select class="landingSelect" name="" id="">
                         <option disabled selected>sort</option>
                         <option value="alpha">alphabetically</option>
                         <option value="marketCap">marketcap</option>
@@ -74,6 +81,24 @@
         </div>
         <div class="onecoin"></div>
     </main>
+    <article>
+        <div class="modalContainer">
+            <section class="modal wrapper">
+                <button class="close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modalImage">
+                    <img src="./assets/qrCode.png" alt="qr code for bitcoin wallet">
+                </div>
+                <div class="modalContent">
+                    <div class="modalHeading">
+                        <h2>Scan here to donate 0.0000050BTC</h2>
+                    </div>
+                </div>
+            </section>
+            <div class="modalOverlay"></div>
+        </div>
+    </article>
     <script src="app.js"></script>
 </body>
 
