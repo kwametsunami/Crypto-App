@@ -15,8 +15,19 @@ async function getApi() {
 
 }
 
+app.landing = () => {
+    if ('change') {
+        const landing = document.querySelector(".landing")
+        const nav = document.querySelector(".desktop")
+        landing.style.display = "none"
+        nav.style.display = "flex"
+    }
+}
+
 app.dropDown = () => {
-    document.querySelector("select").addEventListener('change', (event) => {
+    const bothDropDowns = document.querySelectorAll("select")
+    const [drop1, drop2] = bothDropDowns
+    document.querySelector(".navSelect").addEventListener('change', (event) => {
         app.display()
         app.liElement.innerHTML = ''
         if (event.target.value === "marketCap") {
@@ -30,7 +41,22 @@ app.dropDown = () => {
         }
         app.display()
     })
+    document.querySelector(".landingSelect").addEventListener('change', (event) => {
+        app.display()
+        app.landing()
+        app.liElement.innerHTML = ''
+        if (event.target.value === "marketCap") {
+            app.api.sort((a, b) => (a.marketcap - b.marketcap))
+            console.log("yo")
 
+        }
+        else if (event.target.value === "alpha") {
+            app.api.sort((a, b) => a.name.localeCompare(b.name))
+            console.log("hi")
+        }
+        app.display()
+        app.landing()
+    })
 }
 
 app.display = () => {
@@ -40,14 +66,6 @@ app.display = () => {
         console.log("list is on!")
     }
     const oneCoin = document.querySelector(".onecoin")
-    const bothInputs = document.querySelectorAll("input")
-    const input1 = bothInputs [0]
-    console.log(input1)
-    // console.log(input2)
-    console.log(bothInputs)
-    // const {input3, input4} = app.api
-    // console.log(input3)
-    // console.log(input4)
     const clear = () => {
         oneCoin.style.display = "none"
         console.log("cleared!");
@@ -65,7 +83,8 @@ app.display = () => {
 
 app.displayOneCoin = (api) => {
     const oneCoinEl = document.querySelector('.onecoin')
-    const formEl = document.querySelector('form')
+    const bothForms = document.querySelectorAll("form")
+    const [form1, form2] = bothForms
     const list = document.querySelector(".list")
     const coinOn = () => {
         oneCoinEl.style.display = "flex"
@@ -75,7 +94,7 @@ app.displayOneCoin = (api) => {
         list.style.display = "none"
         console.log("cleared the list!")
     }
-    formEl.addEventListener('submit', (event) => {
+    form1.addEventListener('submit', (event) => {
         event.preventDefault()
         let inputEl = document.querySelector('input')
         let userInput = inputEl.value.toLowerCase()
@@ -89,11 +108,37 @@ app.displayOneCoin = (api) => {
                 <p>Price: ${coin.price}</p>
                 <p>Marketcap: ${coin.marketCap}</p></div>`
         })
-
     })
-
-
+    form2.addEventListener('submit', (event) => {
+        event.preventDefault()
+        let inputEl = document.querySelector('.landingInput')
+        let userInput = inputEl.value.toLowerCase()
+        inputEl.value = ''
+        const usersCoin = api.filter(coin => coin.name.toLowerCase() === userInput || coin.symbol.toLowerCase() === userInput)
+        usersCoin.map(coin => {
+            oneCoinEl.innerHTML =
+                `<div class="coinContainer"><p> ${coin.rank}</p>
+                <img src="${coin.iconUrl}" alt="" style=width:50px>
+                <p>${coin.name}</p>
+                <p>Price: ${coin.price}</p>
+                <p>Marketcap: ${coin.marketCap}</p></div>`
+        })
+        if ('submit'){
+            const landing = document.querySelector(".landing")
+            const nav = document.querySelector(".desktop")
+            landing.style.display = "none"
+            nav.style.display = "flex"
+        }
+    })
 }
+
+// app.landing = () => {
+//     const landing = document.querySelector(".landing")
+//     if (app.display || app.displayOneCoin) {
+//         landing.style.display = "none"
+//         console.log("landing is off")
+//     }
+// }
 
 app.modal = () => {
     const modalBox = document.querySelector('.modalContainer')
