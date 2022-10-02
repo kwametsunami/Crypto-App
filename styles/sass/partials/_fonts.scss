@@ -52,13 +52,24 @@ h2 {
     margin: 0;
 }
 
+h3 {
+    font-size: 2.5rem;
+    font-family: $headingFont2;
+    #greenNav {
+        font-family: $headingFont;
+        color: $green;
+    }
+    a {
+        color: $white;
+    }
+}
+
 p {
     font-size: 2rem;
 }
 
 a {
     text-decoration: none;
-    color: $blue;
 }
 
 label {

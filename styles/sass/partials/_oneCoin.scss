@@ -1,0 +1,34 @@
+@use "variables" as *;
+
+header {
+    position: relative;
+
+    .onecoin {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .coinContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    }
+}
+
+
+.none {
+    display: none;
+}
+
+.df {
+    width: 500px;
+    display: flex;
+    margin: 0 auto;
+    transform: translateY(-150px);
+}

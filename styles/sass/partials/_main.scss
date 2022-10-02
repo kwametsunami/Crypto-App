@@ -2,7 +2,7 @@
 
 .landing {
     // turn back to flex
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     position: absolute;
@@ -76,11 +76,10 @@
         }
         p {
             margin: 0;
-            align-self: flex-end;
+            align-self: center;
             #or {
                 font-size: 3.5rem;
                 color: $white;
-                align-self: flex-start;
             }
         }
     }
