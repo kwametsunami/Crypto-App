@@ -126,10 +126,19 @@ app.display = () => {
             </td>
             <td> $${coin.current_price}</td>
             <td> ${coin.market_cap}</td>
-            <td>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
+            <td class="change">24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
+            console.log(coin.market_cap_change_percentage_24h)
+        if (coin.market_cap_change_percentage_24h > 0) {
+            const cap = document.querySelector(".change");
+            cap.classList.remove("change")
+            cap.classList.add("changeG")
+        } else if(coin.market_cap_change_percentage_24h < 0) {
+            const cap = document.querySelector(".change");
+            cap.classList.remove("change")
+            cap.classList.add("changeR")
+        }
     })
 }
-
 
 function yellow() {
     const star = document.querySelector('li')

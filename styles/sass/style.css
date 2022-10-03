@@ -630,6 +630,15 @@ table .tableAlign {
   display: flex;
   align-items: center;
 }
+table .change {
+  color: #ffffff;
+}
+table .changeG {
+  color: #229a24;
+}
+table .changeR {
+  color: red;
+}
 
 footer {
   text-align: center;
