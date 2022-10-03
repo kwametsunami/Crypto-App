@@ -54,7 +54,7 @@ app.dropDown = () => {
         app.display()
         app.liElement.innerHTML = ''
         if (event.target.value === "marketCap") {
-            app.api.sort((a, b) => (a.market_cap_change_percentage_24h - b.market_cap_change_percentage_24h))
+            app.api.sort((a, b) => (b.market_cap - a.market_cap))
 
         }
         else if (event.target.value === "alpha") {
@@ -79,18 +79,25 @@ app.display = () => {
                 </div>
                 <p>Price: $${coin.current_price}</p>
                 <p>Marketcap: ${coin.market_cap}</p></div>
-                <p>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</p></div>
-                <i onclick="yellow()" class="fa-regular fa-star"></i>`
+                <p>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</p>
+                <i class="fa-regular fa-star"></i></div>`
+    })
+
+
+}
+
+
+app.yellow = () => {
+    app.liElement = document.querySelector("ul")
+    app.liElement.addEventListener('click', function (event) {
+        if (event.target.tagName === 'I') {
+            event.target.classList.toggle("star")
+            console.log(event.target)
+        }
     })
 }
 
-
-function yellow() {
-    const star = document.querySelector('li')
-    star.classList.toggle("star")
-}
-
-
+app.yellow()
 
 
 async function getApi2() {
