@@ -148,7 +148,7 @@ app.displayOneCoin = (api) => {
                 <p>Price: $${coin.current_price}</p>
                 <p>Marketcap: $${coin.market_cap}</p>
                 <p>Max supply: ${coin.max_supply}</p>
-                <p>All time high price: $${coin.high_24h}</p>
+                <p>All time high price: $${coin.ath}</p>
                 </div>
                 
 
