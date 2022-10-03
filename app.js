@@ -120,7 +120,7 @@ app.display = () => {
              <tr><td>${coin.market_cap_rank}</td>
                 <td class="tableAlign">
                     <img src="${coin.image}" alt="picture of ${coin.id}">
-                    ${coin.id}
+                    ${coin.id} ${coin.symbol}
                 </td>
                 <td> $${coin.current_price}</td>
                 <td> ${coin.market_cap}</td>
