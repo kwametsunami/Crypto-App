@@ -1,19 +1,51 @@
 const app = {}
-app.api
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '620365d56amshf652e5c75b7c837p105d6djsnde2c918cd479',
-        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
-    }
-};
+
 async function getApi() {
-    const response = await fetch('https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0', options)
+    const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d')
     const data = await response.json()
-    app.api = data.data.coins.filter(coin => coin.rank <= 20)
+    app.api = data
     app.displayOneCoin(app.api)
+    console.log(data)
+    // let ylabels1 = []
+    // data.forEach(num => ylabels1.push(num.sparkline_in_7d.price))
+    // for (let i = 0; i <= 19; i++) {
+    //     ylabels1.push[data[i].sparkline_in_7d.price]
+    //     console.log(ylabels1)
 }
 
+
+// let ylabels1 = []
+
+// let day1 = []
+// for (let i = 1; i <= 7; i++) {
+//     day1.push("day " + i)
+// }
+
+// async function chartIt1() {
+//     await getApi()
+//     const data1 = {
+//         labels: day1,
+//         datasets: [{
+//             label: `7 day coin data`,
+//             backgroundColor: 'rgb(255, 99, 132)',
+//             borderColor: 'rgb(255, 99, 132)',
+//             data: ylabels1
+//         }]
+//     };
+
+
+//     const config = {
+//         type: 'line',
+//         data: data1
+//     };
+//     if (myChart != null) {
+//         myChart.destroy()
+//     }
+
+//     myChart = new Chart(
+//         document.getElementById('myChart'),
+//         config);
+// }
 
 
 app.dropDown = () => {
@@ -22,15 +54,15 @@ app.dropDown = () => {
         app.display()
         app.liElement.innerHTML = ''
         if (event.target.value === "marketCap") {
-            console.log("marketcap1")
-            app.api.sort((a, b) => (a.marketCap - b.marketCap))
-            console.log("marketcap2")
+            app.api.sort((a, b) => (a.market_cap_rank - b.market_cap_rank))
+
         }
         else if (event.target.value === "alpha") {
-            console.log("marketcap3")
             app.api.sort((a, b) => a.name.localeCompare(b.name))
-            console.log("marketcap4")
         }
+        // else if (event.target.value === "alpha") {
+        //     app.api.sort((a, b) => a.name.localeCompare(b.name))
+        // }
         app.display()
     })
 
@@ -40,13 +72,16 @@ app.display = () => {
     app.liElement = document.querySelector("li");
     app.api.map(coin => {
         app.liElement.innerHTML +=
-            `<div class="coinList"><p> ${coin.rank}</p>
+            `<div class="coinList"><p> ${coin.market_cap_rank}</p>
                 <div class="coinId">
-                    <img src="${coin.iconUrl}" alt="picture of crypo currency">
-                    <p>${coin.name}</p>
+                    <img src="${coin.image}" alt="picture of crypo currency">
+                    <p>${coin.id}</p>
                 </div>
-                <p>Price: ${coin.price}</p>
-                <p>Marketcap: ${coin.marketCap}</p></div>`
+                <p>Price: $${coin.current_price}</p>
+                <p>Marketcap: ${coin.market_cap}</p></div>
+                <p>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</p></div>
+                `
+        /* <p>Marketcap: ${chartIt1()}</p></div> */
     })
 }
 
@@ -77,7 +112,7 @@ async function chartIt() {
             data: ylabels
         }]
     };
-    console.log(data1.datasets[0].data)
+
 
     const config = {
         type: 'line',
@@ -93,7 +128,7 @@ async function chartIt() {
 }
 
 app.displayOneCoin = (api) => {
-    // async function displayOneCoin() {
+
     const oneCoinEl = document.querySelector('.onecoin')
     const formEl = document.querySelector('form')
     const chartEl = document.querySelector('.none')
@@ -104,14 +139,19 @@ app.displayOneCoin = (api) => {
         app.userInput = app.inputEl.value.toLowerCase()
         app.inputEl.value = ''
         chartIt()
-        app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput)
+        app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<div class="coinContainer"><p> ${coin.rank}</p>
-                <img src="${coin.iconUrl}" alt="" style=width:50px>
-                <p>${coin.name}</p>
-                <p>Price: ${coin.price}</p>
-                <p>Marketcap: ${coin.marketCap}</p></div>
+                `<div class="coinContainer"><p>Rank: ${coin.market_cap_rank}</p>
+                <img src="${coin.image}" alt="" style=width:50px>
+                <p>Name: ${coin.name}</p>
+                <p>Price: $${coin.current_price}</p>
+                <p>Marketcap: $${coin.market_cap}</p>
+                <p>Max supply: ${coin.max_supply}</p>
+                <p>All time high price: $${coin.high_24h}</p>
+                </div>
+                
+
               `
         })
         return app.userInput
