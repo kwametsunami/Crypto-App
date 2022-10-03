@@ -10,6 +10,7 @@ async function getApi() {
     // for (let i = 0; i <= 19; i++) {
     //     ylabels1.push[data[i].sparkline_in_7d.price]
     //     console.log(ylabels1)
+    console.log(data)
 }
 
 
@@ -71,7 +72,7 @@ app.display = () => {
     app.liElement = document.querySelector("li");
     app.api.map(coin => {
         app.liElement.innerHTML +=
-            `<div class="coinList"><p> ${coin.market_cap_change_percentage_24h}</p>
+            `<div class="coinList"><p>Rank: ${coin.market_cap_rank}</p>
                 <div class="coinId">
                     <img src="${coin.image}" alt="picture of crypo currency">
                     <p>${coin.id}</p>
@@ -147,7 +148,7 @@ app.displayOneCoin = (api) => {
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<div class="coinContainer"><p>Rank: ${coin.market_cap_change_percentage_24h}</p>
+                `<div class="coinContainer"><p>Rank: ${coin.market_cap_rank}</p>
                 <img src="${coin.image}" alt="" style=width:50px>
                 <p>Name: ${coin.name}</p>
                 <p>Price: $${coin.current_price}</p>
