@@ -258,6 +258,7 @@ app.displayOneCoin = (api) => {
             const nav = document.querySelector(".desktop")
             landing.style.display = "none"
             nav.style.display = "flex"
+            coinOn();
         }
     })
 }
