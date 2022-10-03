@@ -55,14 +55,8 @@ app.display = () => {
 async function getApi2() {
     const response = await fetch(`https://api.coingecko.com/api/v3/coins/${app.userInput}/market_chart?vs_currency=usd&days=7`)
     const data = await response.json()
-    if (ylabels.length > 1) {
-        ylabels = []
-        data.prices.forEach(num => ylabels.push(num[1]))
-    }
-    else {
-        data.prices.forEach(num => ylabels.push(num[1]))
-    }
-
+    ylabels = []
+    data.prices.forEach(num => ylabels.push(num[1]))
 }
 
 
@@ -70,10 +64,6 @@ let day = []
 for (let i = 1; i <= 20; i++) {
     day.push("day " + i)
 }
-let ylabels = []
-
-
-
 
 let myChart = null
 async function chartIt() {
