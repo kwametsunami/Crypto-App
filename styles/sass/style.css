@@ -591,6 +591,10 @@ header .onecoin .coinContainer {
   display: none;
 }
 
+.star {
+  color: yellow;
+}
+
 .table {
   display: flex;
   flex-flow: column nowrap;
