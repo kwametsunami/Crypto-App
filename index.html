@@ -27,23 +27,22 @@
                         <option disabled selected>sort</option>
                         <option value="alpha">alphabetically</option>
                         <option value="marketCap">marketcap</option>
-                        <option value=""></option>
+                        <option value="change">change</option>
                     </select>
                 </div>
             </div>
         </div>
     </nav>
     <div class="onecoin wrapper"></div>
-    <table class="list">
+        <div class="none df" id="graph-container">
+            <canvas id="myChart"></canvas>
+        </div>
+    <table class="list wrapper">
         <thead>
-            <!-- <tr class="listLabels">
-                <th>ranking</th>
-                <th>name</th>
-                <th>price</th>
-                <th>market cap</th>
-            </tr> -->
+
         </thead>
-        <tbody>
+        <tbody class="target">
+            <div class="star"></div>
         </tbody>
     </table>
 </header>
@@ -80,6 +79,9 @@
             </div>
         </div>
         <div class="onecoin"></div>
+        <div class="none df" id="graph-container">
+            <canvas id="myChart"></canvas>
+        </div>
     </main>
     <article>
         <div class="modalContainer">
@@ -100,6 +102,6 @@
         </div>
     </article>
     <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </body>
-
 </html>
