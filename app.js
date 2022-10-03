@@ -12,21 +12,24 @@ async function getApi() {
     const data = await response.json()
     app.api = data.data.coins.filter(coin => coin.rank <= 20)
     app.displayOneCoin(app.api)
-
-
 }
 
 
+
 app.dropDown = () => {
+
     document.querySelector("select").addEventListener('change', (event) => {
         app.display()
         app.liElement.innerHTML = ''
         if (event.target.value === "marketCap") {
-            app.api.sort((a, b) => (a.marketcap - b.marketcap))
-
+            console.log("marketcap1")
+            app.api.sort((a, b) => (a.marketCap - b.marketCap))
+            console.log("marketcap2")
         }
         else if (event.target.value === "alpha") {
+            console.log("marketcap3")
             app.api.sort((a, b) => a.name.localeCompare(b.name))
+            console.log("marketcap4")
         }
         app.display()
     })
@@ -52,7 +55,13 @@ app.display = () => {
 async function getApi2() {
     const response = await fetch(`https://api.coingecko.com/api/v3/coins/${app.userInput}/market_chart?vs_currency=usd&days=7`)
     const data = await response.json()
-    data.prices.forEach(num => ylabels.push(num[1]))
+    if (ylabels.length > 1) {
+        ylabels = []
+        data.prices.forEach(num => ylabels.push(num[1]))
+    }
+    else {
+        data.prices.forEach(num => ylabels.push(num[1]))
+    }
 
 }
 
@@ -61,32 +70,40 @@ let day = []
 for (let i = 1; i <= 20; i++) {
     day.push("day " + i)
 }
-const xlabels = []
-const ylabels = []
+let ylabels = []
 
+
+
+
+let myChart = null
 async function chartIt() {
     await getApi2()
     const data1 = {
         labels: day,
         datasets: [{
-            label: `20 day crypto data`,
+            label: `20 day coin data`,
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: ylabels
         }]
     };
+    console.log(data1.datasets[0].data)
 
     const config = {
         type: 'line',
-        data: data1,
-        options: {}
+        data: data1
     };
-    const myChart = new Chart(
+    if (myChart != null) {
+        myChart.destroy()
+    }
+
+    myChart = new Chart(
         document.getElementById('myChart'),
-        config)
+        config);
 }
 
 app.displayOneCoin = (api) => {
+    // async function displayOneCoin() {
     const oneCoinEl = document.querySelector('.onecoin')
     const formEl = document.querySelector('form')
     const chartEl = document.querySelector('.none')
@@ -95,8 +112,8 @@ app.displayOneCoin = (api) => {
         chartEl.classList.remove('none')
         app.inputEl = document.querySelector('input')
         app.userInput = app.inputEl.value.toLowerCase()
-        chartIt()
         app.inputEl.value = ''
+        chartIt()
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
@@ -111,11 +128,9 @@ app.displayOneCoin = (api) => {
     })
 }
 
-
 app.init = () => {
     getApi()
     app.dropDown()
-
 }
 
 
