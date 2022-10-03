@@ -568,6 +568,10 @@ header .onecoin .coinContainer {
   transform: translateY(-150px);
 }
 
+.star {
+  color: yellow;
+}
+
 .list {
   display: flex;
   flex-direction: column;

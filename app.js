@@ -5,7 +5,6 @@ async function getApi() {
     const data = await response.json()
     app.api = data
     app.displayOneCoin(app.api)
-    console.log(data)
     // let ylabels1 = []
     // data.forEach(num => ylabels1.push(num.sparkline_in_7d.price))
     // for (let i = 0; i <= 19; i++) {
@@ -54,15 +53,15 @@ app.dropDown = () => {
         app.display()
         app.liElement.innerHTML = ''
         if (event.target.value === "marketCap") {
-            app.api.sort((a, b) => (a.market_cap_rank - b.market_cap_rank))
+            app.api.sort((a, b) => (a.market_cap_change_percentage_24h - b.market_cap_change_percentage_24h))
 
         }
         else if (event.target.value === "alpha") {
             app.api.sort((a, b) => a.name.localeCompare(b.name))
         }
-        // else if (event.target.value === "alpha") {
-        //     app.api.sort((a, b) => a.name.localeCompare(b.name))
-        // }
+        else if (event.target.value === "change") {
+            app.api.sort((a, b) => (b.market_cap_change_percentage_24h - a.market_cap_change_percentage_24h))
+        }
         app.display()
     })
 
@@ -72,7 +71,7 @@ app.display = () => {
     app.liElement = document.querySelector("li");
     app.api.map(coin => {
         app.liElement.innerHTML +=
-            `<div class="coinList"><p> ${coin.market_cap_rank}</p>
+            `<div class="coinList"><p> ${coin.market_cap_change_percentage_24h}</p>
                 <div class="coinId">
                     <img src="${coin.image}" alt="picture of crypo currency">
                     <p>${coin.id}</p>
@@ -80,10 +79,16 @@ app.display = () => {
                 <p>Price: $${coin.current_price}</p>
                 <p>Marketcap: ${coin.market_cap}</p></div>
                 <p>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</p></div>
-                `
-        /* <p>Marketcap: ${chartIt1()}</p></div> */
+                <i onclick="yellow()" class="fa-regular fa-star"></i>`
     })
 }
+
+
+function yellow() {
+    const star = document.querySelector('li')
+    star.classList.toggle("star")
+}
+
 
 
 
@@ -142,7 +147,7 @@ app.displayOneCoin = (api) => {
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<div class="coinContainer"><p>Rank: ${coin.market_cap_rank}</p>
+                `<div class="coinContainer"><p>Rank: ${coin.market_cap_change_percentage_24h}</p>
                 <img src="${coin.image}" alt="" style=width:50px>
                 <p>Name: ${coin.name}</p>
                 <p>Price: $${coin.current_price}</p>
