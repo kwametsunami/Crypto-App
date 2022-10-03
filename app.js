@@ -116,16 +116,17 @@ app.display = () => {
     const oneCoin = document.querySelector(".onecoin");
     app.api.map(coin => {
         app.tableElement.innerHTML +=
-            `<tbody>
-             <tr><td>${coin.market_cap_rank}</td>
-                <td class="tableAlign">
-                    <img src="${coin.image}" alt="picture of ${coin.id}">
+        `<tbody>
+            <tr>
+            <td><i onclick="yellow()" class="fa-regular fa-star"></i></td>
+            <td>${coin.market_cap_rank}</td>
+            <td class="tableAlign">
+                <img src="${coin.image}" alt="picture of ${coin.id}">
                     ${coin.id} ${coin.symbol}
-                </td>
-                <td> $${coin.current_price}</td>
-                <td> ${coin.market_cap}</td>
-                <td>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>
-                <i onclick="yellow()" class="fa-regular fa-star"></i>`
+            </td>
+            <td> $${coin.current_price}</td>
+            <td> ${coin.market_cap}</td>
+            <td>24 hour change: $${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
     })
 }
 
