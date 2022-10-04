@@ -3,6 +3,7 @@
 header {
     position: relative;
     height: 100vh;
+
     .onecoin {
         display: flex;
         justify-content: center;
@@ -10,6 +11,7 @@ header {
         top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
+
         .coinContainer {
             display: flex;
             flex-direction: column;
@@ -29,5 +31,18 @@ header {
 }
 
 .star {
-    color: yellow;
+    color: yellow !important;
+
+
+}
+
+.fa-sharp {
+    color: black;
+    font-weight: 500 !important;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
 }

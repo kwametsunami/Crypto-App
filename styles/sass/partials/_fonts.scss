@@ -37,6 +37,7 @@ h1 {
     color: $white;
     margin: 0;
     letter-spacing: -5px;
+
     #green {
         font-weight: bold;
         font-family: $headingFont;
@@ -55,10 +56,12 @@ h2 {
 h3 {
     font-size: 2.5rem;
     font-family: $headingFont2;
+
     #greenNav {
         font-family: $headingFont;
         color: $green;
     }
+
     a {
         color: $white;
     }
@@ -89,7 +92,7 @@ select {
     font-family: $font;
 }
 
-.fa-solid {
+.fa-arrow-left {
     font-size: 2rem;
     align-self: center;
     padding-left: 12px;

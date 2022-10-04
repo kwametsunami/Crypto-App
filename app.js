@@ -116,9 +116,9 @@ app.display = () => {
     const oneCoin = document.querySelector(".onecoin");
     app.api.map(coin => {
         app.tableElement.innerHTML +=
-        `<tbody>
+            `<tbody>
             <tr>
-            <td><i onclick="yellow()" class="fa-regular fa-star"></i></td>
+            <td><i class="fa-sharp fa-solid fa-star"></i></td>
             <td>${coin.market_cap_rank}</td>
             <td class="tableAlign">
                 <img src="${coin.image}" alt="picture of ${coin.id}">
@@ -127,12 +127,12 @@ app.display = () => {
             <td> $${coin.current_price}</td>
             <td> ${coin.market_cap}</td>
             <td class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
-            console.log(coin.market_cap_change_percentage_24h)
+        console.log(coin.market_cap_change_percentage_24h)
         if (coin.market_cap_change_percentage_24h > 0) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
             cap.classList.add("changeG")
-        } else if(coin.market_cap_change_percentage_24h < 0) {
+        } else if (coin.market_cap_change_percentage_24h < 0) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
             cap.classList.add("changeR")
@@ -219,7 +219,7 @@ app.displayOneCoin = (api) => {
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<div class="coinContainer"><p>Rank: ${coin.market_cap_rank}</p>
+                `<div class="coinContainer"><p>Rank: $${coin.market_cap_rank}</p>
                 <img src="${coin.image}" alt="" style=width:50px>
                 <p>Name: ${coin.name}</p>
                 <p>Price: $${coin.current_price}</p>
@@ -228,7 +228,7 @@ app.displayOneCoin = (api) => {
                 <p>All time high price: $${coin.ath}</p>
                 </div>`
         })
-        if ('submit'){
+        if ('submit') {
             clear();
             coinOn();
         }

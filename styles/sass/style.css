@@ -373,7 +373,7 @@ select {
   font-family: "Inter Tight";
 }
 
-.fa-solid {
+.fa-arrow-left {
   font-size: 2rem;
   align-self: center;
   padding-left: 12px;
@@ -592,7 +592,16 @@ header .onecoin .coinContainer {
 }
 
 .star {
-  color: yellow;
+  color: yellow !important;
+}
+
+.fa-sharp {
+  color: black;
+  font-weight: 500 !important;
+  font-size: 15px;
+}
+.fa-sharp:hover {
+  cursor: pointer;
 }
 
 .table {
