@@ -219,7 +219,7 @@ app.displayOneCoin = (api) => {
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<div class="coinContainer"><p>Rank: $${coin.market_cap_rank}</p>
+                `<div class="coinContainer"><p>Rank: ${coin.market_cap_rank}</p>
                 <img src="${coin.image}" alt="" style=width:50px>
                 <p>Name: ${coin.name}</p>
                 <p>Price: $${coin.current_price}</p>
@@ -244,13 +244,14 @@ app.displayOneCoin = (api) => {
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
         app.usersCoin.map(coin => {
             oneCoinEl.innerHTML =
-                `<div class="coinContainer"><p>Rank: ${coin.market_cap_rank}</p>
-                <img src="${coin.image}" alt="" style=width:50px>
-                <p>Name: ${coin.name}</p>
-                <p>Price: $${coin.current_price}</p>
-                <p>Marketcap: $${coin.market_cap}</p>
-                <p>Max supply: ${coin.max_supply}</p>
-                <p>All time high price: $${coin.ath}</p>
+                `<div class="coinContainer">
+                <div class="left"><p class="rank">Rank: ${coin.market_cap_rank}</p>
+                <div class="imageName"><img class="image" src="${coin.image}" alt="a picture of ${coin.name}" style=width:75px>
+                <p class="name">${coin.name}</p><p class="symbol"> (${coin.symbol})</p></div>
+                <h4 class="price">$${coin.current_price}</h4></div>
+                <div class="right"><p class="marketcap">Marketcap: $${coin.market_cap}</p>
+                <p class="supply">Max supply: ${coin.max_supply}</p>
+                <p class="high">All time high price: $${coin.ath}</p></div>
                 </div>`
         })
         if ('submit') {
