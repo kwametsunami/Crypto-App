@@ -51,7 +51,6 @@
                     &:focus {
                         outline: none;
                         border-left: 0.4rem solid $green;
-                        border-bottom: 0.4rem solid $green;
                     }
                 }
             }
@@ -69,8 +68,6 @@
                 &:focus {
                     outline: none;
                     border-left: 0.4rem solid $green;
-                    border-bottom: 0.4rem solid $green;
-                    // box-shadow: 25px -25px $green;
                 }
             }
         }
