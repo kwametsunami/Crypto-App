@@ -271,6 +271,70 @@ html {
     opacity: 1;
   }
 }
+@-webkit-keyframes rotate {
+  0% {
+    content: "e.g. ";
+  }
+}
+@keyframes rotate {
+  0% {
+    content: "e.g. ";
+  }
+}
+@-webkit-keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+@keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+@-webkit-keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes move {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+@keyframes move {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
 .underlineTransition {
   display: inline-block;
   position: relative;
@@ -493,6 +557,61 @@ ul {
   color: #ffffff;
 }
 
+.scrollContainer {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+}
+.scrollContainer .animationContainer {
+  display: flex;
+  width: 100%;
+  transform: translateX(0%);
+  -webkit-animation: move 120s linear 0.25s infinite alternate;
+          animation: move 120s linear 0.25s infinite alternate;
+}
+.scrollContainer .animationContainer .scrolling {
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+  padding: 0 12px;
+  text-align: center;
+  width: 100%;
+}
+.scrollContainer .animationContainer .scrolling .scrollImage {
+  display: flex;
+  justify-content: center;
+}
+.scrollContainer .animationContainer .scrolling img {
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  align-self: center;
+}
+.scrollContainer .animationContainer .scrolling p {
+  width: auto;
+}
+.scrollContainer .animationContainer .scrolling .change {
+  color: #ffffff;
+}
+.scrollContainer .animationContainer .scrolling .changeG {
+  color: #229a24;
+}
+.scrollContainer .animationContainer .scrolling .changeG::before {
+  content: "▲ ";
+}
+.scrollContainer .animationContainer .scrolling .changeR {
+  color: #db3f3f;
+}
+.scrollContainer .animationContainer .scrolling .changeR::before {
+  content: "▼ ";
+}
+
 .modalContainer {
   z-index: 51;
   position: fixed;
@@ -501,6 +620,9 @@ ul {
   height: 100%;
   overflow: auto;
   display: none;
+  transform: scale(0);
+  -webkit-animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .modal {
@@ -512,6 +634,9 @@ ul {
   background-color: #000000;
   border: 2px solid #229a24;
   position: relative;
+  transform: scale(0);
+  -webkit-animation: zoomIn 0.7s 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation: zoomIn 0.7s 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 .modal .modalImage {
   display: flex;
@@ -547,6 +672,10 @@ ul {
   height: 100%;
   z-index: 50;
   background: rgba(0, 0, 0, 0.835);
+  display: none;
+  transform: scale(0);
+  -webkit-animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 nav .desktop {
@@ -601,7 +730,7 @@ nav .desktop a {
 
 header {
   position: relative;
-  height: 100vh;
+  height: 93.5vh;
 }
 header .onecoin {
   display: flex;
@@ -646,10 +775,9 @@ header .onecoin .coinContainer .imageName img {
 
 .df {
   display: none;
-}
-.df canvas {
+  position: relative;
   width: 95vw;
-  height: 90vh;
+  height: 80vh;
   margin: 0 auto;
 }
 
@@ -719,17 +847,21 @@ table .changeG::before {
   content: "▲ ";
 }
 table .changeR {
-  color: red;
+  color: #db3f3f;
 }
 table .changeR::before {
   content: "▼ ";
 }
 
 footer {
+  display: block;
   text-align: center;
-  padding: 5px;
+  padding: 15px;
+  margin: 5px 0;
+  height: 4vh;
 }
 footer p {
-  color: #ffffff;
+  color: #D3D3D3;
   line-height: 0px;
+  font-size: 1rem;
 }/*# sourceMappingURL=style.css.map */

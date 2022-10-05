@@ -28,6 +28,105 @@
     }
 }
 
+@keyframes rotate {
+    0% {
+        content: "e.g. "
+    }
+    5% {
+        
+    }
+    10% {
+
+    }
+    15% {
+
+    }
+    20% {
+        
+    }
+    25% {
+
+    }
+    30% {
+
+    }
+    35% {
+
+    }
+    40% {
+
+    }
+    45% {
+
+    }
+    50% {
+
+    }
+    55% {
+
+    }
+    60% {
+
+    }
+    65% {
+
+    }
+    70% {
+
+    }
+    75% {
+
+    }
+    80% {
+
+    }
+    85% {
+
+    }
+    90% {
+
+    }
+    95% {
+
+    }
+    100% {
+
+    }
+}
+
+@keyframes unfoldIn {
+    0% {
+        transform: scaleY(.005) scaleX(0);
+    }
+
+    50% {
+        transform: scaleY(.005) scaleX(1);
+    }
+
+    100% {
+        transform: scaleY(1) scaleX(1);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes move {
+    0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-300%);
+        }
+}
+
 .underlineTransition {
     display: inline-block;
     position: relative;

@@ -14,7 +14,7 @@
         flex-direction: column;
         text-align: center;
         #green {
-            animation: blend 0.65s linear 0.5s 1 normal forwards
+            animation: blend 0.65s linear 0.5s 1 normal forwards;
         }
     }
     .donate {
@@ -77,6 +77,59 @@
             #or {
                 font-size: 3.5rem;
                 color: $white;
+            }
+        }
+    }
+}
+.scrollContainer {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    top: 67%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    .animationContainer {
+        display: flex;
+        width: 100%;
+        transform: translateX(0%);
+        animation: move 120s linear .25s infinite alternate;
+        .scrolling {
+            display: flex;
+            flex-direction: column;
+            margin: 0 15px;
+            padding: 0 12px;
+            text-align: center;
+            width: 100%;
+            .scrollImage {
+            display: flex;
+            justify-content: center;
+            }
+            img {
+                height: 30px;
+                object-fit: cover;
+                align-self: center;
+            }
+            p {
+                width: auto;
+            }
+            .change {
+                color: $white;
+            }
+            .changeG {
+                color: $green;
+                &::before
+                {
+                    content: "▲ "
+                }
+            }
+            .changeR {
+                color: $red;
+                &::before {
+                    content: "▼ "
+                }
             }
         }
     }

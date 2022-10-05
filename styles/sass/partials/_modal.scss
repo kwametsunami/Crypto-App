@@ -8,6 +8,8 @@
     height: 100%;
     overflow: auto;
     display: none;
+    transform: scale(0);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;               
 }
 .modal {
     display: flex;
@@ -18,6 +20,8 @@
     background-color: $black;
     border: 2px solid $green;
     position: relative;
+    transform: scale(0);
+    animation: zoomIn .7s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
     .modalImage {
         display: flex;
         width: 100%;
@@ -52,4 +56,7 @@
     height: 100%;
     z-index: 50;
     background: rgba(0, 0, 0, 0.835);
+    display: none;
+    transform: scale(0);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
 }

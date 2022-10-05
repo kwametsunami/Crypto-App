@@ -85,7 +85,7 @@ table {
         }
     }
     .changeR {
-        color: red;
+        color: $red;
         &::before {
             content: "▼ "
         }

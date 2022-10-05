@@ -5,53 +5,16 @@ async function getApi() {
     const data = await response.json()
     app.api = data
     app.displayOneCoin(app.api)
-    // let ylabels1 = []
-    // data.forEach(num => ylabels1.push(num.sparkline_in_7d.price))
-    // for (let i = 0; i <= 19; i++) {
-    //     ylabels1.push[data[i].sparkline_in_7d.price]
-    //     console.log(ylabels1)
-    console.log(data)
+    app.scroll(app.api)
 }
-
-
-// let ylabels1 = []
-
-// let day1 = []
-// for (let i = 1; i <= 7; i++) {
-//     day1.push("day " + i)
-// }
-
-// async function chartIt1() {
-//     await getApi()
-//     const data1 = {
-//         labels: day1,
-//         datasets: [{
-//             label: `7 day coin data`,
-//             backgroundColor: 'rgb(255, 99, 132)',
-//             borderColor: 'rgb(255, 99, 132)',
-//             data: ylabels1
-//         }]
-//     };
-
-
-//     const config = {
-//         type: 'line',
-//         data: data1
-//     };
-//     if (myChart != null) {
-//         myChart.destroy()
-//     }
-
-//     myChart = new Chart(
-//         document.getElementById('myChart'),
-//         config);
-// }
 
 app.landing = () => {
     if ('change') {
         const landing = document.querySelector(".landing")
         const nav = document.querySelector(".desktop")
+        const scroll = document.querySelector(".scrollContainer")
         landing.style.display = "none"
+        scroll.style.display = "none"
         nav.style.display = "flex"
     }
 }
@@ -66,12 +29,10 @@ app.dropDown = () => {
     const listOn = () => {
         tableElement.style.display = "table"
         tableHeader.style.display = "block"
-        console.log("list is on!")
     }
     const clear = () => {
         oneCoin.style.display = "none"
         chart.style.display = "none"
-        console.log("cleared!");
     }
     document.querySelector(".navSelect").addEventListener('change', (event) => {
         clear();
@@ -106,7 +67,6 @@ app.dropDown = () => {
             app.api.sort((a, b) => (b.market_cap_change_percentage_24h - a.market_cap_change_percentage_24h))
         }
         app.display()
-        app.landing()
     })
 
 }
@@ -127,7 +87,6 @@ app.display = () => {
             <td> $${coin.current_price}</td>
             <td> $${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
             <td class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
-        console.log(coin.market_cap_change_percentage_24h)
         if (coin.market_cap_change_percentage_24h > 0) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
@@ -145,7 +104,6 @@ app.yellow = () => {
     app.liElement.addEventListener('click', function (event) {
         if (event.target.tagName === 'I') {
             event.target.classList.toggle("star")
-            console.log(event.target)
         }
     })
 }
@@ -182,7 +140,8 @@ async function chartIt() {
 
     const config = {
         type: 'line',
-        data: data1
+        data: data1,
+        options: { maintainAspectRatio: false }
     };
     if (myChart != null) {
         myChart.destroy()
@@ -193,6 +152,31 @@ async function chartIt() {
         config);
 }
 
+app.scroll = (api) => {
+    const scrollContainer = document.querySelector(".animationContainer")
+    for (let i = 0; i < 5; i++){
+        api.map(coin => {
+            scrollContainer.innerHTML +=
+            `<div class="scrolling">
+                <p>${coin.id}</p>
+                    <div class="scrollImage"><img src="${coin.image}"></div>
+                <p class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</p>
+            </div>`
+            if (coin.market_cap_change_percentage_24h > 0) {
+                const cap = document.querySelector(".change");
+                cap.classList.remove("change")
+                cap.classList.add("changeG")
+                console.log("change green")
+            } else if (coin.market_cap_change_percentage_24h < 0) {
+                const cap = document.querySelector(".change");
+                cap.classList.remove("change")
+                cap.classList.add("changeR")
+                console.log("change red")
+            }
+        })
+    }
+}
+
 app.displayOneCoin = (api) => {
     const oneCoinEl = document.querySelector('.onecoin')
     const bothForms = document.querySelectorAll("form")
@@ -200,14 +184,14 @@ app.displayOneCoin = (api) => {
     const list = document.querySelector("table")
     const chartEl = document.querySelector('.none')
     const chart = document.querySelector('.df')
+    const scroll = document.querySelector('.scrollContainer')
     const clear = () => {
         list.style.display = "none"
-        console.log("cleared the list!")
+        scroll.style.display = "none"
     }
     const coinOn = () => {
         oneCoinEl.style.display = "flex"
         chart.style.display = "flex"
-        console.log("coin is displaying")
     }
     form1.addEventListener('submit', (event) => {
         event.preventDefault()
@@ -258,8 +242,11 @@ app.displayOneCoin = (api) => {
         if ('submit') {
             const landing = document.querySelector(".landing")
             const nav = document.querySelector(".desktop")
+            const footer = document.querySelector("footer")
             landing.style.display = "none"
+            scroll.style.display = "none"
             nav.style.display = "flex"
+            // footer.style.display = "none"
             coinOn();
         }
     })
@@ -267,17 +254,20 @@ app.displayOneCoin = (api) => {
 
 app.modal = () => {
     const modalBox = document.querySelector('.modalContainer')
+    const modalOverlay = document.querySelector('.modalOverlay')
     const body = document.body
     const showModal = document.querySelector('.underlineTransition').addEventListener('click', function () {
         modalBox.style.display = "block"
+        modalOverlay.style.display = "block"
         body.style.overflow = "hidden";
-        console.log("modal!")
+        console.log("modal on")
     });
 
     const close = document.querySelector(".close").addEventListener("click", function () {
         modalBox.style.display = "none";
+        modalOverlay.style.display = "none";
         body.style.overflow = "auto";
-        console.log("closed!")
+        console.log("modal off")
     });
 }
 
