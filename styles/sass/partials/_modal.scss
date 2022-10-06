@@ -18,7 +18,11 @@
     z-index: 52;
     width: 30vw;
     background-color: $black;
-    border: 2px solid $green;
+    // border: 5px solid;
+    // border-image: linear-gradient(to right, $yellow 25%, $green 25%, $green 50%, $red 50%, $red 75%, $blue 75%) 5;
+    // border-image: linear-gradient(to left top, $green 25%, $green 25%, $yellow 50%, $yellow 50%, $red 75%, $red 75%) 5;
+    border: 5px solid $lightGreen;
+    border-radius: 15px;
     position: relative;
     transform: scale(0);
     animation: zoomIn .7s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
@@ -28,16 +32,16 @@
         justify-content: center;
         img {
             width: 45%;
-            padding: 25px 0;
+            padding: 40px 0 25px;
         }
     }
     button {
         border: none;
         background-color: transparent;
-        color: $white;
+        color: $yellow;
         position: absolute;
-        top: 1%;
-        right: 3%;
+        top: 3%;
+        right: 10%;
         .fa-xmark {
             font-size: 3rem;
         }

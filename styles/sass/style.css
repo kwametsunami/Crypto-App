@@ -572,8 +572,8 @@ ul {
   display: flex;
   width: 100%;
   transform: translateX(0%);
-  -webkit-animation: move 120s linear 0.25s infinite alternate;
-          animation: move 120s linear 0.25s infinite alternate;
+  -webkit-animation: move 180s linear 0.25s infinite alternate;
+          animation: move 180s linear 0.25s infinite alternate;
 }
 .scrollContainer .animationContainer .scrolling {
   display: flex;
@@ -632,7 +632,8 @@ ul {
   z-index: 52;
   width: 30vw;
   background-color: #000000;
-  border: 2px solid #229a24;
+  border: 5px solid #4eb750;
+  border-radius: 15px;
   position: relative;
   transform: scale(0);
   -webkit-animation: zoomIn 0.7s 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
@@ -645,15 +646,15 @@ ul {
 }
 .modal .modalImage img {
   width: 45%;
-  padding: 25px 0;
+  padding: 40px 0 25px;
 }
 .modal button {
   border: none;
   background-color: transparent;
-  color: #ffffff;
+  color: #FFC000;
   position: absolute;
-  top: 1%;
-  right: 3%;
+  top: 3%;
+  right: 10%;
 }
 .modal button .fa-xmark {
   font-size: 3rem;
@@ -739,12 +740,28 @@ header .onecoin {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
 }
 header .onecoin .coinContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 45%;
+  width: 50%;
+}
+header .onecoin .coinContainer::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  /* for demo purposes */
+}
+header .onecoin .coinContainer:hover {
+  z-index: 0;
 }
 header .onecoin .coinContainer .rank {
   margin: 0 5px;
@@ -762,11 +779,17 @@ header .onecoin .coinContainer .imageName .symbol {
   padding-left: 5px;
 }
 header .onecoin .coinContainer .imageName img {
-  width: 100%;
-  height: 40px;
+  width: 35px;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
   align-self: center;
+}
+header .onecoin .coinContainer .left {
+  width: 50%;
+}
+header .onecoin .coinContainer .right {
+  width: 50%;
 }
 
 .none {
@@ -777,8 +800,9 @@ header .onecoin .coinContainer .imageName img {
   display: none;
   position: relative;
   width: 95vw;
-  height: 80vh;
+  height: 83.5vh;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .star {

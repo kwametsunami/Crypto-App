@@ -6,6 +6,7 @@ async function getApi() {
     app.api = data
     app.displayOneCoin(app.api)
     app.scroll(app.api)
+    app.converting()
 }
 
 app.landing = () => {
@@ -82,19 +83,23 @@ app.display = () => {
             <td>${coin.market_cap_rank}</td>
             <td class="tableAlign">
                 <img src="${coin.image}" alt="picture of ${coin.id}">
-                    <span class="nameUp">${coin.id}</span><span class="symbolTable">${coin.symbol}</span>
+                    <span class="nameUp">${coin.name}</span><span class="symbolTable">${coin.symbol}</span>
             </td>
             <td> $${coin.current_price}</td>
             <td> $${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
             <td class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
-        if (coin.market_cap_change_percentage_24h > 0) {
+            console.log(coin.market_cap_change_percentage_24h)
+        if (coin.market_cap_change_percentage_24h > 0.000005) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
             cap.classList.add("changeG")
         } else if (coin.market_cap_change_percentage_24h < 0) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
-            cap.classList.add("changeR")
+            cap.classList.add("changeR")        
+        } else if (coin.market_cap_change_percentage_24h.toFixed(1) == 0.0) {
+            const cap = document.querySelector(".change")
+            cap.style.color = "$white"
         }
     })
 }
@@ -108,7 +113,14 @@ app.yellow = () => {
     })
 }
 
-
+app.converting = () => {
+    app.api.forEach(coin => {
+        if (app.userInput === coin.symbol.toLowerCase() || app.userInput === coin.name.toLowerCase()) {
+            app.userInput = coin.id
+            getApi2()
+        }
+    })
+}
 
 
 async function getApi2() {
@@ -154,11 +166,11 @@ async function chartIt() {
 
 app.scroll = (api) => {
     const scrollContainer = document.querySelector(".animationContainer")
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 8; i++){
         api.map(coin => {
             scrollContainer.innerHTML +=
             `<div class="scrolling">
-                <p>${coin.id}</p>
+                <p>${coin.name}</p>
                     <div class="scrollImage"><img src="${coin.image}"></div>
                 <p class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</p>
             </div>`
@@ -166,12 +178,13 @@ app.scroll = (api) => {
                 const cap = document.querySelector(".change");
                 cap.classList.remove("change")
                 cap.classList.add("changeG")
-                console.log("change green")
             } else if (coin.market_cap_change_percentage_24h < 0) {
                 const cap = document.querySelector(".change");
                 cap.classList.remove("change")
                 cap.classList.add("changeR")
-                console.log("change red")
+            } else if (coin.market_cap_change_percentage_24h == 0) {
+                const cap = document.querySelector(".change")
+                cap.style.color = "$white"
             }
         })
     }
@@ -198,6 +211,7 @@ app.displayOneCoin = (api) => {
         chartEl.classList.remove('none')
         app.inputEl = document.querySelector('.navInput')
         app.userInput = app.inputEl.value.toLowerCase()
+        app.converting()
         app.inputEl.value = ''
         chartIt()
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
@@ -209,7 +223,7 @@ app.displayOneCoin = (api) => {
                 <p class="name">${coin.name}</p><p class="symbol"> (${coin.symbol})</p></div>
                 <h4 class="price">$${coin.current_price}</h4></div>
                 <div class="right"><p class="marketcap">Marketcap: $${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                <p class="supply">Max supply: ${coin.max_supply}</p>
+                <p class="supply">Max supply: ${coin.max_supply === null ? "N/A" : coin.max_supply}</p>
                 <p class="high">All Time High: $${coin.ath}</p></div>
                 </div>`
         })
@@ -224,6 +238,7 @@ app.displayOneCoin = (api) => {
         chartEl.classList.remove('none')
         app.inputEl = document.querySelector('.landingInput')
         app.userInput = app.inputEl.value.toLowerCase()
+        app.converting()
         app.inputEl.value = ''
         chartIt()
         app.usersCoin = api.filter(coin => coin.name.toLowerCase() === app.userInput || coin.symbol.toLowerCase() === app.userInput || coin.id.toLowerCase() === app.userInput)
@@ -235,7 +250,7 @@ app.displayOneCoin = (api) => {
                 <p class="name">${coin.name}</p><p class="symbol"> (${coin.symbol})</p></div>
                 <h4 class="price">$${coin.current_price}</h4></div>
                 <div class="right"><p class="marketcap">Marketcap: $${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                <p class="supply">Max supply: ${coin.max_supply}</p>
+                <p class="supply">Max supply: ${coin.max_supply === null ? "N/A" : coin.max_supply}</p>
                 <p class="high">All Time High: $${coin.ath}</p></div>
                 </div>`
         })
