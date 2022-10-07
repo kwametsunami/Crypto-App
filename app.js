@@ -76,8 +76,8 @@ app.display = () => {
     app.tableElement = document.querySelector("table");
     const oneCoin = document.querySelector(".onecoin");
     app.api.map(coin => {
-        app.tableElement.innerHTML +=
-            `<tbody>
+        app.tableElement.innerHTML += `
+            <tbody>
             <tr>
             <td><i class="fa-sharp fa-solid fa-star"></i></td>
             <td>${coin.market_cap_rank}</td>
@@ -88,7 +88,6 @@ app.display = () => {
             <td> $${coin.current_price}</td>
             <td> $${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
             <td class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
-            console.log(coin.market_cap_change_percentage_24h)
         if (coin.market_cap_change_percentage_24h > 0.000005) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
@@ -96,12 +95,29 @@ app.display = () => {
         } else if (coin.market_cap_change_percentage_24h < 0) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
-            cap.classList.add("changeR")        
+            cap.classList.add("changeR")
         } else if (coin.market_cap_change_percentage_24h.toFixed(1) == 0.0) {
             const cap = document.querySelector(".change")
             cap.style.color = "$white"
         }
     })
+    app.tableHeader()
+}
+
+app.tableHeader = () => {
+    const table = document.querySelector("table");
+    const thead =
+        `<thead>
+            <tr>
+                <th> </th>
+                <th>Rank</th>
+                <th>Coin</th>
+                <th>Price</th>
+                <th>Market Cap</th>
+                <th>24h Change</th>
+            </tr>
+        </thead>`
+    table.innerHTML = thead + table.innerHTML;
 }
 
 app.yellow = () => {
@@ -166,10 +182,10 @@ async function chartIt() {
 
 app.scroll = (api) => {
     const scrollContainer = document.querySelector(".animationContainer")
-    for (let i = 0; i < 8; i++){
+    for (let i = 0; i < 8; i++) {
         api.map(coin => {
             scrollContainer.innerHTML +=
-            `<div class="scrolling">
+                `<div class="scrolling">
                 <p>${coin.name}</p>
                     <div class="scrollImage"><img src="${coin.image}"></div>
                 <p class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</p>
@@ -275,14 +291,12 @@ app.modal = () => {
         modalBox.style.display = "block"
         modalOverlay.style.display = "block"
         body.style.overflow = "hidden";
-        console.log("modal on")
     });
 
     const close = document.querySelector(".close").addEventListener("click", function () {
         modalBox.style.display = "none";
         modalOverlay.style.display = "none";
         body.style.overflow = "auto";
-        console.log("modal off")
     });
 }
 

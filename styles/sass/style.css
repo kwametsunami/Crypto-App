@@ -818,44 +818,45 @@ header .onecoin .coinContainer .right {
   cursor: pointer;
 }
 
-.table {
-  display: flex;
-  flex-flow: column nowrap;
-  font-size: 0.8rem;
-  margin: 0.5rem;
-  line-height: 1.5;
-  border-bottom: 1px solid #eee;
-  flex: 1 1 auto;
-}
-
 table {
   display: table;
-  border-collapse: separate;
+  border-collapse: collapse;
   box-sizing: border-box;
   text-indent: initial;
   border-spacing: 2px;
-  border-color: grey;
 }
 table thead {
   display: table-header-group;
+  padding: 15px 0px;
+  text-align: left;
 }
 table thead tr {
   vertical-align: inherit;
-  border-color: inherit;
+}
+table thead tr th {
+  padding: 15px;
+  border-bottom: 1px solid #4a4a4b;
+  font-size: 1.3rem;
 }
 table td {
   overflow: hidden;
-  height: 3.5vh;
+  height: 3.75vh;
   white-space: nowrap;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #4a4a4b;
 }
 table td img {
   width: 15px;
   height: auto;
   margin: 0 7px;
 }
+table td .nameUp {
+  font-weight: 900;
+}
 table td .symbolTable {
   padding-left: 5px;
   text-transform: uppercase;
+  color: #D3D3D3;
 }
 table .tableAlign {
   display: flex;
@@ -888,4 +889,186 @@ footer p {
   color: #D3D3D3;
   line-height: 0px;
   font-size: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .landing .bars {
+    width: 120%;
+  }
+}
+@media (max-width: 810px) {
+  .landing .bars {
+    width: 137%;
+    padding-bottom: 75px;
+  }
+  .scrollContainer {
+    width: 93%;
+  }
+  .modal .modalContent {
+    width: 100%;
+  }
+  nav .desktop .navBars {
+    width: 53%;
+  }
+  nav .desktop {
+    padding: 25px 25px;
+  }
+  header .onecoin {
+    top: 37%;
+  }
+  header .onecoin .coinContainer {
+    width: 81%;
+  }
+}
+@media (max-width: 500px) {
+  nav .desktop .navBars {
+    width: 50%;
+  }
+  nav .desktop h3 {
+    font-size: 1.75rem;
+  }
+  .scrollContainer {
+    width: 90%;
+    padding-top: 50px;
+  }
+  .titleContainer {
+    padding-top: 45px;
+  }
+  .titleContainer h1 {
+    font-size: 7.5rem;
+  }
+  .landing .bars {
+    width: 135%;
+    padding-bottom: 20px;
+  }
+  .landing .donate {
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+  .landing .donate .donateText {
+    font-size: 2rem;
+  }
+  .landing .donate .underlineTransition {
+    padding-top: 10px;
+  }
+  .landing .donate .fa-solid {
+    font-size: 2.5rem;
+    padding-top: 8px;
+  }
+  nav .desktop h3 {
+    font-size: 2.2rem;
+  }
+  nav .desktop .navBars {
+    width: 58%;
+  }
+  nav .desktop .navBars input {
+    font-size: 1rem;
+  }
+  nav .desktop .navBars select {
+    font-size: 1rem;
+  }
+  header .onecoin {
+    top: 39%;
+    left: 53%;
+  }
+  header .onecoin .coinContainer {
+    width: 80%;
+  }
+  header .onecoin .coinContainer .left {
+    font-size: 1.3rem;
+  }
+  header .onecoin .coinContainer .left .rank {
+    font-size: 1.5rem;
+  }
+  header .onecoin .coinContainer .left .imageName {
+    padding-top: 15px;
+  }
+  header .onecoin .coinContainer .left .imageName p {
+    font-size: 1.3rem;
+    padding-left: 4px;
+  }
+  header .onecoin .coinContainer .left .price {
+    font-size: 2rem;
+  }
+  header .onecoin .coinContainer .right {
+    width: 38%;
+  }
+  header .onecoin .coinContainer .right p {
+    font-size: 1.3rem;
+  }
+  .modalContainer {
+    left: 21vw;
+  }
+  .modalContainer .modal {
+    width: 58vw;
+  }
+  select option {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 320px) {
+  .landing {
+    top: 41%;
+  }
+  .landing .bars {
+    width: 174%;
+    padding-bottom: 75px;
+    flex-direction: column;
+  }
+  .landing .bars p {
+    margin-top: 10px;
+  }
+  .landing .bars p #or {
+    font-size: 2.5rem;
+  }
+  .landing .bars .dropDownFilter {
+    padding-left: 0;
+  }
+  .landing .bars .dropDownFilter label {
+    padding-bottom: 25px;
+    font-size: 1.5rem;
+  }
+  .landing .bars .searchBar {
+    padding-right: 0;
+  }
+  .landing .bars .searchBar form label {
+    padding-bottom: 25px;
+    font-size: 1.5rem;
+  }
+  .titleContainer {
+    padding-top: 45px;
+    width: 191%;
+  }
+  .titleContainer h1 {
+    font-size: 5.1rem;
+  }
+  .titleContainer .donate {
+    padding-top: 13px;
+  }
+  .titleContainer .donate .fa-solid {
+    padding-top: 10px;
+  }
+  .scrollContainer {
+    margin-top: 60px;
+  }
+  .df {
+    display: none;
+    position: absolute;
+    width: 98vw;
+    height: 40vh;
+    margin: 0 auto;
+    z-index: 1;
+    top: 42%;
+  }
+  header .onecoin {
+    top: 26%;
+  }
+  header .onecoin .coinContainer {
+    width: 100%;
+  }
+  header .onecoin .coinContainer .left h4 {
+    margin-top: 20px;
+  }
 }/*# sourceMappingURL=style.css.map */

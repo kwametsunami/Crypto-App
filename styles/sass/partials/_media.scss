@@ -1,0 +1,272 @@
+@use "variables" as *;
+
+@media(max-width: 1000px) {
+    .landing {
+        .bars {
+            width: 120%;
+        }
+    }
+}
+
+@media(max-width: 810px) {
+    .landing {
+        .bars {
+            width: 137%;
+            padding-bottom: 75px;
+        }
+    }
+
+    .scrollContainer {
+        width: 93%;
+    }
+
+    .modal .modalContent {
+        width: 100%;
+    }
+
+    nav .desktop .navBars {
+        width: 53%;
+    }
+
+    nav .desktop {
+        padding: 25px 25px;
+    }
+
+    header {
+        .onecoin {
+            top: 37%;
+
+            .coinContainer {
+                width: 81%;
+
+            }
+        }
+    }
+}
+
+
+@media(max-width: 500px) {
+    nav {
+        .desktop {
+            .navBars {
+                width: 50%;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+            }
+        }
+    }
+
+
+    .scrollContainer {
+        width: 90%;
+        padding-top: 50px;
+    }
+
+    .titleContainer {
+        padding-top: 45px;
+
+        h1 {
+            font-size: 7.5rem;
+        }
+    }
+
+    .landing {
+        .bars {
+            width: 135%;
+            padding-bottom: 20px;
+        }
+
+        .donate {
+            padding-top: 25px;
+            padding-left: 15px;
+            padding-bottom: 25px;
+            text-align: center;
+
+            .donateText {
+                font-size: 2rem;
+            }
+
+            .underlineTransition {
+                padding-top: 10px;
+            }
+
+            .fa-solid {
+                font-size: 2.5rem;
+                padding-top: 8px;
+
+            }
+        }
+    }
+
+    nav .desktop h3 {
+        font-size: 2.2rem;
+    }
+
+    nav .desktop .navBars {
+        width: 58%;
+
+        input {
+            font-size: 1rem;
+        }
+
+        select {
+            font-size: 1rem;
+        }
+    }
+
+    header {
+        .onecoin {
+            top: 39%;
+            left: 53%;
+
+            .coinContainer {
+                width: 80%;
+
+                .left {
+                    font-size: 1.3rem;
+
+                    .rank {
+                        font-size: 1.5rem;
+                    }
+
+                    .imageName {
+                        padding-top: 15px;
+
+                        p {
+                            font-size: 1.3rem;
+                            padding-left: 4px;
+                        }
+                    }
+
+                    .price {
+                        font-size: 2rem;
+                    }
+                }
+
+                .right {
+                    width: 38%;
+
+                    p {
+                        font-size: 1.3rem;
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
+    .modalContainer {
+        left: 21vw;
+
+        .modal {
+            width: 58vw;
+        }
+    }
+
+    select {
+        option {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media(max-width: 320px) {
+    .landing {
+        top: 41%;
+
+        .bars {
+            width: 174%;
+            padding-bottom: 75px;
+            flex-direction: column;
+
+            p {
+                margin-top: 10px;
+
+                #or {
+                    font-size: 2.5rem;
+
+                }
+            }
+
+            .dropDownFilter {
+                padding-left: 0;
+
+                label {
+                    padding-bottom: 25px;
+                    font-size: 1.5rem;
+                }
+
+            }
+
+            .searchBar {
+                padding-right: 0;
+
+                form {
+                    label {
+                        padding-bottom: 25px;
+                        font-size: 1.5rem;
+                    }
+                }
+
+            }
+        }
+
+
+    }
+
+
+    .titleContainer {
+        padding-top: 45px;
+        width: 191%;
+
+        h1 {
+            font-size: 5.1rem;
+        }
+
+        .donate {
+            padding-top: 13px;
+
+
+            .fa-solid {
+                padding-top: 10px;
+
+            }
+        }
+    }
+
+    .scrollContainer {
+        margin-top: 60px;
+    }
+
+    .df {
+        display: none;
+        position: absolute;
+        width: 98vw;
+        height: 40vh;
+        margin: 0 auto;
+        z-index: 1;
+        top: 42%;
+
+    }
+
+    header {
+        .onecoin {
+            top: 26%;
+
+            .coinContainer {
+                width: 100%;
+
+                .left {
+                    h4 {
+                        margin-top: 20px;
+                    }
+
+                }
+            }
+        }
+    }
+}
