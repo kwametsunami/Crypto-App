@@ -77,6 +77,7 @@ app.display = () => {
     const oneCoin = document.querySelector(".onecoin");
     app.api.map(coin => {
         app.tableElement.innerHTML += `
+        
             <tbody>
             <tr>
             <td><i class="fa-sharp fa-solid fa-star"></i></td>
@@ -87,7 +88,8 @@ app.display = () => {
             </td>
             <td> $${coin.current_price}</td>
             <td> $${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-            <td class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>`
+            <td class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</td>
+           `
         if (coin.market_cap_change_percentage_24h > 0.000005) {
             const cap = document.querySelector(".change");
             cap.classList.remove("change")
@@ -133,7 +135,6 @@ app.converting = () => {
     app.api.forEach(coin => {
         if (app.userInput === coin.symbol.toLowerCase() || app.userInput === coin.name.toLowerCase()) {
             app.userInput = coin.id
-            getApi2()
         }
     })
 }
@@ -142,6 +143,9 @@ app.converting = () => {
 async function getApi2() {
     const response = await fetch(`https://api.coingecko.com/api/v3/coins/${app.userInput}/market_chart?vs_currency=usd&days=7`)
     const data = await response.json()
+    .catch(error=>{
+         alert(error)
+    })
     ylabels = []
     data.prices.forEach(num => ylabels.push(num[1]))
 }
@@ -277,7 +281,6 @@ app.displayOneCoin = (api) => {
             landing.style.display = "none"
             scroll.style.display = "none"
             nav.style.display = "flex"
-            // footer.style.display = "none"
             coinOn();
         }
     })

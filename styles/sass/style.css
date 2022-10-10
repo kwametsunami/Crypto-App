@@ -538,6 +538,9 @@ ul {
   width: 100%;
   padding-left: 20px;
 }
+.landing .bars .dropDownFilter .landingSelect {
+  -webkit-appearance: none;
+}
 .landing .bars .dropDownFilter label {
   padding: 10px 0;
 }
@@ -714,6 +717,7 @@ nav .desktop .navBars .navDropDownFilter label {
 nav .desktop .navBars .navDropDownFilter select {
   width: 100%;
   padding: 7px;
+  -webkit-appearance: none;
 }
 nav .desktop .navBars #or {
   margin: 0 5px;
@@ -758,7 +762,6 @@ header .onecoin .coinContainer::before {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  /* for demo purposes */
 }
 header .onecoin .coinContainer:hover {
   z-index: 0;
@@ -897,12 +900,22 @@ footer p {
   }
 }
 @media (max-width: 810px) {
+  .landing .titleContainer {
+    padding-top: 45px;
+  }
+  .landing .titleContainer .donate .donateText {
+    font-size: 2rem;
+  }
+  .landing .titleContainer h1 {
+    font-size: 6.5rem;
+  }
   .landing .bars {
     width: 137%;
     padding-bottom: 75px;
   }
   .scrollContainer {
     width: 93%;
+    top: 85%;
   }
   .modal .modalContent {
     width: 100%;
@@ -919,17 +932,30 @@ footer p {
   header .onecoin .coinContainer {
     width: 81%;
   }
+  header .onecoin .coinContainer .right {
+    padding-left: 40px;
+  }
 }
 @media (max-width: 500px) {
+  table {
+    max-width: 80% !important;
+  }
+  .df {
+    width: 90vw;
+    height: 80vh;
+  }
+  nav .desktop {
+    flex-direction: column !important;
+  }
   nav .desktop .navBars {
-    width: 50%;
+    width: 100% !important;
   }
   nav .desktop h3 {
     font-size: 1.75rem;
   }
   .scrollContainer {
     width: 90%;
-    top: 80%;
+    top: 85%;
   }
   .titleContainer {
     padding-top: 45px;
@@ -948,7 +974,7 @@ footer p {
     text-align: center;
   }
   .landing .donate .donateText {
-    font-size: 2rem;
+    font-size: 1.6rem !important;
   }
   .landing .donate .underlineTransition {
     padding-top: 10px;
@@ -975,6 +1001,9 @@ footer p {
   }
   header .onecoin .coinContainer {
     width: 80%;
+  }
+  header .onecoin .coinContainer .right {
+    padding-left: 10px;
   }
   header .onecoin .coinContainer .left {
     font-size: 1.3rem;
@@ -1039,24 +1068,27 @@ footer p {
   }
   .titleContainer {
     padding-top: 45px;
-    width: 191%;
   }
   .titleContainer h1 {
-    font-size: 5.1rem;
+    font-size: 4.5rem !important;
   }
-  .titleContainer .donate {
+  .titleContainer .landing .donate {
     padding-top: 13px;
   }
-  .titleContainer .donate .fa-solid {
+  .titleContainer .landing .donate .donateText {
+    font-size: 0.94rem !important;
+  }
+  .titleContainer .landing .fa-solid {
     padding-top: 10px;
   }
   .scrollContainer {
     margin-top: 60px;
+    top: 82%;
   }
   .df {
     display: none;
     position: absolute;
-    width: 98vw;
+    width: 92vw;
     height: 40vh;
     margin: 0 auto;
     z-index: 1;
@@ -1067,6 +1099,9 @@ footer p {
   }
   header .onecoin .coinContainer {
     width: 100%;
+  }
+  header .onecoin .coinContainer .right {
+    transform: translateX(-15px);
   }
   header .onecoin .coinContainer .left h4 {
     margin-top: 20px;

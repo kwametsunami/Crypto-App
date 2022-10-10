@@ -1,7 +1,6 @@
 @use "variables" as *;
 
 .landing {
-    // turn back to flex
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,6 +59,10 @@
             flex-direction: column;
             width: 100%;
             padding-left: 20px;
+            
+            .landingSelect{
+                -webkit-appearance: none;
+            }
             label {
                 padding: 10px 0;
             }
