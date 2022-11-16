@@ -191,7 +191,7 @@ app.scroll = (api) => {
             scrollContainer.innerHTML +=
                 `<div class="scrolling">
                 <p>${coin.name}</p>
-                    <div class="scrollImage"><img src="${coin.image}"></div>
+                    <div class="scrollImage"><img src="${coin.image}" alt="cryptocoins"></div>
                 <p class="change">${coin.market_cap_change_percentage_24h.toFixed(1)}%</p>
             </div>`
             if (coin.market_cap_change_percentage_24h > 0) {
